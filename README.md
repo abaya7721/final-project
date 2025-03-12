@@ -81,6 +81,28 @@ This application allows motorsport enthusiasts to explore past race results, dri
 - My preferences and recent activities are saved between sessions
 - Export data as PDF or CSV
 
+### User Story
+
+#### 1. Landing Page
+- When the user goes to application landing page they will see the following:
+- The web app name (WRC Historical Data Viewer) and possible logo
+- Login options
+- Navigation menu
+- Sample visualizations that showcase the type of data available
+- A section showing "Premium Features" benefits of premium access
+
+#### 3. Dashboard View and Site Access
+- The dashboard displays a welcome message
+- User can see a comprehensive navigation menu
+
+#### 4. Data Access
+-  Can access rally data through different filters
+
+#### 5. Possible Advanced Features
+- User can create and save custom data filters and views
+- User can create side-by-side comparisons between different years, drivers, or teams
+- My preferences and recent activities are saved between sessions
+- Export data as PDF or CSV
 
 
 #### Project Roadmap
