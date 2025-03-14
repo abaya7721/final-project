@@ -1,4 +1,4 @@
-# Web App Project
+# Rally Data Viewer App
 
 ## Technical Requirements
 Unless it's modified by a stretch goal (see below), the following are strict technical
@@ -16,10 +16,9 @@ requirements.
 
 ## Planning 
 
-### App Idea 1
-#### WRC Rally Historical Data Viewer + Events for Current Year
+#### World Rally Championship Historical Data Viewer
 
-The WRC Rally Historical Data Viewer is an intuitive web application that provides historical summaries and statistics for World Rally Championship (WRC) races from the 2015 to 2025.
+The WRC Rally Historical Data Viewer is an intuitive web application that provides historical summaries and statistics for World Rally Championship (WRC) races for past races.
 This application allows motorsport enthusiasts to explore past race results, driver statistics, team performances, and overall standings. Users will interact through a responsive web page built with Spring Boot, React, and MySql.
 
 #### Scope 
