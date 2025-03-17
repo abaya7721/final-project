@@ -55,7 +55,7 @@ This application allows motorsport enthusiasts to explore past race results, dri
 
 #### 1. Landing Page and Authentication
 - When the user goes to application landing page they will see the following:
-- The web app name (WRC Historical Data Viewer) and possible logo
+- The web app name (World Rally Data Viewer) and possible logo
 - Login options
 - Navigation menu
 - Sample visualizations that showcase the type of data available
@@ -84,7 +84,7 @@ This application allows motorsport enthusiasts to explore past race results, dri
 
 #### 1. Landing Page
 - When the user goes to application landing page they will see the following:
-- The web app name (WRC Historical Data Viewer) and possible logo
+- The web app name (World Rally Data Viewer) and possible logo
 - Login options
 - Navigation menu
 - Sample visualizations that showcase the type of data available
