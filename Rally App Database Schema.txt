@@ -1,0 +1,58 @@
+Database Tables and Relationships
+•	Drivers Table
+o	DriverID (Primary Key)
+o	Name
+o	Nationality
+o	TeamID fk
+
+•	Teams Table
+o	TeamID (Primary Key)
+o	TeamName
+o	Sponsor
+o	VehicleID fk
+
+•	Vehicles Table
+o	VehicleID (Primary Key)
+o	Make
+o	Model
+o	Year
+
+•	Events Table
+o	EventID (Primary Key)
+o	RaceName
+o	Date
+o	RegionID (fk linking to Regions Table)
+
+•	Region Table
+o	RegionID (Primary Key)
+o	Country
+o	Region
+
+•	Standings Table
+o	StandingsId (PK)
+o	DriverID (fk linking to the Drivers table)
+o	Points
+o	Year
+
+•	Race Results Table
+o	ResultID (Primary Key)
+o	EventID (fk linking to the Event table)
+o	DriverID (fk linking to the Drivers table)
+o	Position
+o	Finish Time - Minutes: Seconds: Milliseconds
+
+•	Users table
+o	UserID
+o	Name
+o	Email
+o	Password
+o	Role
+
+Relationships
+•	Drivers and Teams: A team has a least one driver a driver can be associated to one team (TeamID as Foreign Key in Drivers Table).
+•	Teams and Vehicles: A vehicle can have many teams (VehicleID as Foreign Key in Teams Table).
+•	Race Results: Links drivers and events and linked relationships through DriverID, EventID to track race outcomes.
+•	Drivers and Standings: Tracks drivers' yearly performance using DriverID and Year.
+•	Teams and Standings: Tracks team performance yearly through TeamID.
+•	Events and Race Results: Links each event (EventID) to its race outcomes.
+•	Users Table: Independent table for user credentials and roles.
