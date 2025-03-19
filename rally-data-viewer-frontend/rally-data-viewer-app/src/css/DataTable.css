@@ -1,0 +1,50 @@
+.data-table-container {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-table th {
+  background-color: #f7fafc;
+  font-weight: 600;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.data-table tr:hover {
+  background-color: #edf2f7;
+}
+
+.data-table td {
+  color: #4a5568;
+}
+
+/* Make table responsive */
+@media (max-width: 768px) {
+  .data-table-container {
+    margin: 0 -1rem;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+} 
