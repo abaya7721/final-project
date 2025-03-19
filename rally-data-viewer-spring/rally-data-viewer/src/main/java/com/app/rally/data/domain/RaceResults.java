@@ -1,10 +1,11 @@
 package com.app.rally.data.domain;
 
-import jakarta.persistence.*;
-
-import java.time.Duration;
-import java.time.Year;
 import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "race_results")
@@ -13,22 +14,19 @@ public class RaceResults {
     @Id
     private Integer id;
     private int position;
-    private int minutes;
-    private int seconds;
-    private int milliseconds;
-    private Year year;
-    private Duration duration;
+    @Column(name = "minutes_seconds")
+    private double minutesSeconds;
+    private float milliseconds;
+    
 
     public RaceResults() {
     }
 
-    public RaceResults(Integer id, int position, int minutes, int seconds, int milliseconds, Year year) {
+    public RaceResults(Integer id, int position, float minutesSeconds, float milliseconds) {
         this.id = id;
         this.position = position;
-        this.minutes = minutes;
-        this.seconds = seconds;
-        this.milliseconds = milliseconds;
-        this.year = year;
+        this.minutesSeconds = minutesSeconds;
+        this.milliseconds = milliseconds/1000;
     }
 
     public Integer getId() {
@@ -47,23 +45,16 @@ public class RaceResults {
         this.position = position;
     }
 
-    public int getMinutes() {
-        return minutes;
+    public double getMinutesSeconds() {
+        return minutesSeconds;
     }
 
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
+    public void setMinutesSeconds(float minutesSeconds) {
+        this.minutesSeconds = minutesSeconds;
     }
 
-    public int getSeconds() {
-        return seconds;
-    }
 
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
-    }
-
-    public int getMilliseconds() {
+    public float getMilliseconds() {
         return milliseconds;
     }
 
@@ -71,31 +62,16 @@ public class RaceResults {
         this.milliseconds = milliseconds;
     }
 
-    public Year getYear() {
-        return year;
-    }
-
-    public void setYear(Year year) {
-        this.year = year;
-    }
-
-    public Duration getDuration() {
-        return duration;
-    }
-
-    public void setDuration() {
-        this.duration = Duration.ofMinutes(minutes).plusSeconds(seconds).plusMillis(milliseconds);
-    }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof RaceResults that)) return false;
-        return getPosition() == that.getPosition() && getMinutes() == that.getMinutes() && getSeconds() == that.getSeconds() && getMilliseconds() == that.getMilliseconds() && Objects.equals(getId(), that.getId()) && Objects.equals(getYear(), that.getYear()) && Objects.equals(getDuration(), that.getDuration());
+        return getPosition() == that.getPosition() && getMinutesSeconds() == that.getMinutesSeconds() && getMilliseconds() == that.getMilliseconds() && Objects.equals(getId(), that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getPosition(), getMinutes(), getSeconds(), getMilliseconds(), getYear(), getDuration());
+        return Objects.hash(getId(), getPosition(), getMinutesSeconds(), getMilliseconds());
     }
 
     @Override
@@ -103,11 +79,8 @@ public class RaceResults {
         return "RaceResults{" +
                 "id=" + id +
                 ", position=" + position +
-                ", minutes=" + minutes +
-                ", Year=" + year +
+                ", minutesSeconds=" + minutesSeconds +
                 ", milliseconds=" + milliseconds +
-                ", seconds=" + seconds +
                 '}';
     }
 }
-

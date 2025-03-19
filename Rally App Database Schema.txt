@@ -1,6 +1,6 @@
 Database Tables and Relationships
 •	Drivers Table
-o	DriverID (Primary Key)
+o	DriverID int (Primary Key)
 o	Name
 o	Nationality
 o	TeamID fk

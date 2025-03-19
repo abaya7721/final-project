@@ -1,24 +1,25 @@
 package com.app.rally.data.domain;
 
-import jakarta.persistence.*;
-
-import java.util.Date;
+import java.time.Year;
 import java.util.Objects;
-import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="standings")
-public class Standings {
+public class Standing {
 
     @Id
     private Integer id;
-    private Date year;
+    private Year year;
     private int points;
 
-    public Standings() {
+    public Standing() {
     }
 
-    public Standings(int points, Date year, Integer id) {
+    public Standing(int points, Year year, Integer id) {
         this.points = points;
         this.year = year;
         this.id = id;
@@ -32,11 +33,11 @@ public class Standings {
         this.id = id;
     }
 
-    public Date getYear() {
+    public Year getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(Year year) {
         this.year = year;
     }
 
@@ -50,7 +51,7 @@ public class Standings {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Standings standings)) return false;
+        if (!(o instanceof Standing standings)) return false;
         return getPoints() == standings.getPoints() && Objects.equals(getId(), standings.getId()) && Objects.equals(getYear(), standings.getYear());
     }
 

@@ -1,8 +1,10 @@
 package com.app.rally.data.domain;
 
-import jakarta.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "regions")

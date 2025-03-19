@@ -1,20 +1,27 @@
-package com.app.rally.data.domain;
+package com.app.rally.authentication.data;
 
-import jakarta.persistence.*;
-
-import java.time.Year;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String firstName;
     private String lastName;
+    @Column(nullable = false, columnDefinition = "=TINYINT")
+    //@Boolean
     private String email;
     private char[] password;
     private String role;

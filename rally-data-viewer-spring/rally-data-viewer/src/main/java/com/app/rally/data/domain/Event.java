@@ -1,12 +1,11 @@
 package com.app.rally.data.domain;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import java.time.Year;
-import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name="events")
@@ -14,15 +13,15 @@ public class Event {
     @Id
     private Integer id;
     private String raceName;
-    private Year year;
+    private LocalDate date;
 
     public Event() {
     }
 
-    public Event(Integer id, String name, Year year) {
+    public Event(Integer id, String name, LocalDate date) {
         this.id = id;
         this.raceName = name;
-        this.year = year;
+        this.date = date;   
     }
 
     public Integer getId() {
@@ -41,15 +40,23 @@ public class Event {
         this.raceName = name;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Event event)) return false;
-        return Objects.equals(getId(), event.getId()) && Objects.equals(raceName, event.raceName) && Objects.equals(year, event.year);
+        return Objects.equals(getId(), event.getId()) && Objects.equals(raceName, event.raceName) && Objects.equals(date, event.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), raceName, year);
+        return Objects.hash(getId(), raceName, date);
     }
 
     @Override
@@ -57,7 +64,7 @@ public class Event {
         return "Event{" +
                 "id=" + id +
                 ", raceName='" + raceName + '\'' +
-                ", date=" + year +
+                ", date=" + date +
                 '}';
     }
 }
