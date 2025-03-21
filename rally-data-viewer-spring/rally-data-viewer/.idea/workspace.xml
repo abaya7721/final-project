@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e5b450ad-bc90-4488-8e88-2d7238045009" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/.idea/rally-data-viewer-react.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/eslint.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/public/background-smoke-cottonbro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/public/bg-rally-car-aykut-ercun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/public/blue-gradient-bg-jeremy-bishop.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/public/rally-data-logo.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/About.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/DataTable.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/DataTest.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/LandingPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/LogIn.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/MainHeader.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/Navigation.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/components/SignUp.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/css/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/css/DataTable.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/main.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/src/utilities/NameModifier.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rally-data-viewer-frontend/rally-data-viewer-app/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/CorsConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/RallyDataViewerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/authentication/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/authentication/data/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/authentication/data/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/controller/RallyDataController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/Driver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/Event.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/RaceResults.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/Region.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/Standing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/Team.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/domain/esting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/DriverRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/EventRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/RaceResultsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/RegionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/StandingsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/TeamRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/rally/data/repository/VehicleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/app/rally/RallyDataViewerApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;abaya7721&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/abaya7721/rally-data-viewer-app.git&quot;,
+    &quot;accountId&quot;: &quot;fe7e8dfa-b55b-456f-934d-5adb08600162&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2uUaxnHwNP4r7aQVbvWOdWvsdZ9" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.RallyDataViewerApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/abayardo/Documents/java-2024-12-work/GitHub/rally-data-viewer-app/java backend/rally-data-viewer"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.app.rally.data.domain" />
+      <recent name="com.app.rally" />
+      <recent name="com.app.rally.service" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e5b450ad-bc90-4488-8e88-2d7238045009" name="Changes" comment="" />
+      <created>1742305856167</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742305856167</updated>
+    </task>
+    <servers />
+  </component>
+</project>

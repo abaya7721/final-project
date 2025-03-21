@@ -1,0 +1,258 @@
+/* Admin Dashboard Styles */
+.admin-page {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+}
+
+.admin-banner {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.banner-image-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.admin-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  filter: brightness(0.9);
+}
+
+.admin-banner-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  height: 20%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  padding: 1.5rem;
+  background-color: rgba(24, 50, 119, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.admin-banner-text {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.banner-title {
+  margin-top: 0rem;
+  font-size: 1.8rem;
+  margin-bottom: 0rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-tagline {
+  font-size: 1rem;
+  color: #f39939;
+  margin-bottom: 0rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.banner-signup-overlay {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+
+
+}
+
+.admin-welcome {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 1rem;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.admin-options {
+  border: 0px solid #f39939;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  width: 100%;
+  padding: 0 2rem;
+  position: relative;
+  background-color: transparent;
+}
+
+
+.admin-option-button {
+  padding: 1.2rem 2.5rem;
+  border-radius: 25px;
+  margin: 0 1rem;
+  background-color: rgba(243, 153, 57, 0.1);
+  color: #ffffff;
+  border: 2px solid #f39939;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 200px;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+  width: 50%;
+}
+
+.admin-option-button:hover {
+  background-color: #f39939;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(243, 153, 57, 0.4);
+}
+
+.admin-nav {
+  margin-top: auto;
+  padding: 1rem 0;
+  width: 100%;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+}
+
+.admin-nav .nav-container {
+  justify-content: center;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0.7rem 0.7rem;
+  color: #ffffff;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.logout-button:hover {
+  color: #f39939;
+}
+
+@media (max-width: 767px) {
+  .admin-options {
+    height: 200px;
+  }
+
+  .admin-option-button {
+    margin-top: 1rem;
+  }
+
+  .admin-banner-content-container {
+    margin-top: 20px;
+    height: 200px;
+  }
+
+  .admin-banner-image-container {
+    margin-top: 0px;
+  }
+}
+
+/* Tablet (≥ 768px) */
+@media (min-width: 768px) {
+  .admin-banner {
+    height: 70vh;
+  }
+
+  .admin-banner-content-container {
+    width: 85%;
+    height: 200px;
+    padding: 2rem;
+  }
+
+  .banner-title {
+    font-size: 2.2rem;
+  }
+
+  .banner-tagline {
+    font-size: 1.2rem;
+  }
+
+  .admin-options {
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  .admin-option-button {
+    width: 50%;
+    margin-top: 1rem;
+  }
+}
+
+/* Small desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .admin-banner {
+    height: 80vh;
+  }
+
+  .admin-banner-content-container {
+    width: 70%;
+    padding: 2.5rem;
+  }
+
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-tagline {
+    font-size: 1.3rem;
+  }
+
+  .admin-options {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .admin-option-button {
+    width: auto;
+  }
+}
+
+/* Large desktop (≥ 1200px) */
+@media (min-width: 1200px) {
+  .admin-banner-content-container {
+    width: 50%;
+    padding: 3rem;
+  }
+
+  .banner-title {
+    font-size: 2.8rem;
+  }
+
+  .banner-tagline {
+    font-size: 1.4rem;
+  }
+} 
