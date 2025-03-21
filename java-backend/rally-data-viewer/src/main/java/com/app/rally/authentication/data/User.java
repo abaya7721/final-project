@@ -1,41 +1,34 @@
 package com.app.rally.authentication.data;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.StringJoiner;
-import java.util.UUID;
-
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
-
     @Id
-    private UUID id;
-    private String username;
-    @Column(nullable = false, columnDefinition = "=TINYINT")
-    private boolean enabled;
-    private String password;
-    private Role role;
+    UUID id;
+    String username;
+    String password;
+    @Column(nullable = false, columnDefinition = "TINYINT")
+    boolean enabled;
+    @Enumerated(EnumType.STRING)
+    Role role;
 
     public User() {
     }
 
-    public User(UUID id, String username, boolean enabled, String password, Role role) {
+    public User(UUID id, String username, String password, boolean enabled, Role role) {
         this.id = id;
         this.username = username;
-        this.enabled = enabled;
         this.password = password;
+        this.enabled = enabled;
         this.role = role;
+
     }
 
     public UUID getId() {
@@ -45,11 +38,15 @@ public class User implements UserDetails {
     public void setId(UUID id) {
         this.id = id;
     }
-    
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -63,13 +60,13 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-        return "";
+    public String getUsername() {
+        return username;
     }
 
     @Override
-    public String getUsername() {
-        return "";
+    public String getPassword() {
+        return password;
     }
 
     @Override
@@ -91,6 +88,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

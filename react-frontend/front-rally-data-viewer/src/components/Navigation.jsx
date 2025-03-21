@@ -15,11 +15,21 @@ const Navigation = () => {
     <nav className="main-nav">
       <div className="nav-container">
         <div className="nav-links">
-          {user.authority === "ADMIN" ? (
+        {user.authority === "USER" ? (
+            <>
+              <a href="/about" className="nav-link">About</a>
+              <a href="/test" className="nav-link">Data Test</a>
+              <a href="/user" className="nav-link">User View</a>
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
+            </>
+          ) : user.authority === "ADMIN" ? (
             <>
               <a href="/about" className="nav-link">About</a>
               <a href="/test" className="nav-link">Data Test</a>
               <a href="/admin" className="nav-link">Admin Dashboard</a>
+              <a href="/user" className="nav-link">User View</a>
               <button onClick={handleLogout} className="logout-button">
                 Logout
               </button>

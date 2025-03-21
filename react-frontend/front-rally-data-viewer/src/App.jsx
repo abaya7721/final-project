@@ -9,40 +9,61 @@ import Test from './components/DataTest';
 import AdminDashboard from './components/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserProvider } from './contexts/UserContext';
+import { DataProvider } from './contexts/DataContext';
 import './css/App.css';
 import Footer from './components/Footer';
+import UserDashboard from './components/UserDashboard';
+
 function App() {
   return (
     <UserProvider>
-      <Router>
-        <div className="app">
-          <MainHeader />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/test" element={<Test />} />
-            <Route 
-              path="/admin" 
-              element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/admin/:section" 
-              element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              } 
-            />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
+      <DataProvider>
+        <Router>
+          <div className="app">
+            <MainHeader />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/test" element={<Test />} />
+              <Route 
+                path="/admin" 
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/admin/:section" 
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route
+                path="/user"
+                element={
+                  <ProtectedRoute>
+                    <UserDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route 
+                path="/user/:section" 
+                element={
+                  <ProtectedRoute>
+                    <UserDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </DataProvider>
     </UserProvider>
   );
 }

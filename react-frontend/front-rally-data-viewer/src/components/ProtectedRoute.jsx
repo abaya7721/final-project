@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
 
-const ProtectedRoute = ({ children, requiredAuthority = "ADMIN" }) => {
+const ProtectedRoute = ({ children, requiredAuthority = "ADMIN" || "USER"}) => {
   const { user } = useUser();
 
   // if (!user.authenticated) {

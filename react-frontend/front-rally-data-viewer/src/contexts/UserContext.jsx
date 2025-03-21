@@ -7,7 +7,8 @@ export const UserProvider = ({ children }) => {
         username: "",
         password: "",
         authenticated: false,
-        authority: "ADMIN"
+        authority: "ADMIN",
+        authority2: "USER"
     };
 
     const [user, setUser] = useState(guest);
