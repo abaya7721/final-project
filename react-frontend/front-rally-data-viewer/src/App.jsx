@@ -15,6 +15,8 @@ import './css/App.css';
 import Footer from './components/common/Footer';
 import UserDashboard from './components/user/UserDashboard';
 import AdminDataViewer from './components/admin/AdminDataViewer';
+import LoginAuth from './components/auth/LoginAuth';
+
 function App() {
   return (
     <UserProvider>
@@ -25,7 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signin" element={<LoginAuth />} />
               <Route path="/about" element={<About />} />
               <Route path="/user" element={<UserDashboard />} />
               <Route 
