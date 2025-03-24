@@ -1,25 +1,26 @@
 package com.app.rally.data.domain;
 
-import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="teams")
-public class Team {
+public class Team { 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    String teamName;
 
-    @OneToMany(mappedBy = "team")
-    private List<Driver> drivers;
+    @Column(name = "team_name")
+    String teamName;
 
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
@@ -28,13 +29,18 @@ public class Team {
     public Team() {
     }
 
-    public Team(Integer id, String teamName) {
+    public Team(Integer id, String name) {
         this.id = id;
-        this.teamName = teamName;
+        this.teamName = name;
     }
+
 
     public String getTeamName() {
         return teamName;
+    }
+
+    public void setTeamName(String name) {
+        this.teamName = name;
     }
 
     public Integer getId() {
@@ -45,17 +51,18 @@ public class Team {
         this.id = id;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+
+    // public Vehicle getVehicle() {
+    //     return vehicle;
+    // }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     // public List<Driver> getDrivers() {
     //     return drivers;
     // }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
 
     @Override
     public boolean equals(Object o) {

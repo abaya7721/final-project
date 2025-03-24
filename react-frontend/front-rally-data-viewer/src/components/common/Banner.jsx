@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import bgRallyCar from '../assets/bg-rally-car-aykut-ercun.jpg';
-import bgSmoke from '../assets/background-smoke-cottonbro.jpg';
-import SignUpButton from './SignUpButton';
+import bgRallyCar from '../../assets/bg-rally-car-aykut-ercun.jpg';
+import bgSmoke from '../../assets/background-smoke-cottonbro.jpg';
+import SignUpButton from '../auth/SignUpButton';
 
 const Banner = () => {
   const bannerRef = useRef(null);

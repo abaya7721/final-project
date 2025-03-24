@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useUser } from '../contexts/UserContext';
+import { useUser } from '../../contexts/UserContext';
 import { AdminOperations } from './AdminOperations';
-import '../css/AdminDataManager.css';
+import '../../css/AdminDataManager.css';
 
 const AdminDataManager = () => {
   const { user } = useUser();
@@ -21,23 +21,24 @@ const AdminDataManager = () => {
         return {
           name: { type: 'text', label: 'Name' },
           nationality: { type: 'text', label: 'Nationality' },
-          team: { type: 'text', label: 'Team' }
+          teamId: { type: 'number', label: 'Team ID' }
         };
       case 'Event':
         return {
           name: { type: 'text', label: 'Name' },
           date: { type: 'date', label: 'Date' },
-          location: { type: 'text', label: 'Location' }
+          location: { type: 'number', label: 'Region ID' }
         };
       case 'Vehicle':
         return {
           make: { type: 'text', label: 'Make' },
           model: { type: 'text', label: 'Model' },
-          year: { type: 'number', label: 'Year' }
+          year: { type: 'number', label: 'Year (YYYY)' }
         };
       case 'Team':
         return {
-          name: { type: 'text', label: 'Name' }
+          name: { type: 'text', label: 'Name' },
+          vehicleId: { type: 'number', label: 'Vehicle ID' }
         };
       default:
         return {};
@@ -91,13 +92,22 @@ const AdminDataManager = () => {
         }
       }
 
+      // Transform data for team operations
+      let dataToSend = { ...formData };
+      if (selectedDataType === 'Team') {
+        if (formData.name) {
+          dataToSend.teamName = formData.name;
+          delete dataToSend.name;
+        }
+      }
+
       switch (selectedAction) {
         case 'Add':
-          result = await AdminOperations.addData(selectedDataType, formData);
+          result = await AdminOperations.addData(selectedDataType, dataToSend);
           setSuccess(`Successfully added new ${selectedDataType.toLowerCase()}`);
           break;
         case 'Update':
-          result = await AdminOperations.updateData(selectedDataType, formData.id, formData);
+          result = await AdminOperations.updateData(selectedDataType, formData.id, dataToSend);
           setSuccess(`Successfully updated ${selectedDataType.toLowerCase()}`);
           break;
         case 'Delete':
@@ -224,6 +234,11 @@ const AdminDataManager = () => {
             {renderForm()}
           </div>
         )}
+
+        <div className="admin-navigation">
+          <a href="/admin/data-viewer" className="nav-link">Data Viewer</a>
+          <a href="/admin" className="nav-link">Home</a>
+        </div>
       </div>
     </div>
   );

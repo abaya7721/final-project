@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import DataTable from './DataTable';
-import { useScrollToComponent } from '../hooks/useScrollToComponent';
+import DataTable from '../data/DataTable';
+import { useScrollToComponent } from '../../hooks/useScrollToComponent';
+import '../../css/AdminDataViewer.css';
 
-const Test = () => {
-  const [testResult, setTestResult] = useState(null);
+const AdminDataViewer = () => {
+  const [viewResult, setViewResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -17,21 +18,21 @@ const Test = () => {
         return 'rally/events';
       case 'teams':
         return 'rally/teams';
-      case 'results':
-        return 'rally/results';
+      case 'vehicles':
+        return 'rally/vehicles';
       default:
         return option;
     }
   };
 
-  const testApiCall = async (option) => {
+  const viewApiCall = async (option) => {
     setLoading(true);
     setError(null);
     try {
       const endpoint = getEndpoint(option);
       const response = await fetch(`http://localhost:8080/${endpoint}`);
       const data = await response.json();
-      setTestResult(data);
+      setViewResult(data);
     } catch (err) {
       setError('Failed to connect to the API');
       console.error('API Error:', err);
@@ -42,47 +43,51 @@ const Test = () => {
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
-    setTestResult(null);
+    setViewResult(null);
   };
 
   return (
-    <div ref={componentRef} className="test-container">
-      <div className="test-content">
-        <h2>Rally Data Explorer</h2>
-        <div className="test-section">
-          <h3>Select Data Category</h3>
-          <div className="test-options">
+    <div ref={componentRef} className="admin-viewer-container">
+      <div className="admin-viewer-content">
+        <div className="admin-mode-banner">
+          <h1>Admin Mode</h1>
+          <p>Data Viewer Console</p>
+        </div>
+
+        <div className="viewer-section">
+          <h2>Rally Data Explorer</h2>
+          <div className="viewer-options">
             <button 
-              className={`test-option-button ${selectedOption === 'drivers' ? 'active' : ''}`}
+              className={`viewer-option-button ${selectedOption === 'drivers' ? 'active' : ''}`}
               onClick={() => handleOptionSelect('drivers')}
             >
               Drivers
             </button>
             <button 
-              className={`test-option-button ${selectedOption === 'events' ? 'active' : ''}`}
+              className={`viewer-option-button ${selectedOption === 'events' ? 'active' : ''}`}
               onClick={() => handleOptionSelect('events')}
             >
               Events
             </button>
             <button 
-              className={`test-option-button ${selectedOption === 'teams' ? 'active' : ''}`}
+              className={`viewer-option-button ${selectedOption === 'teams' ? 'active' : ''}`}
               onClick={() => handleOptionSelect('teams')}
             >
               Teams
             </button>
             <button 
-              className={`test-option-button ${selectedOption === 'results' ? 'active' : ''}`}
-              onClick={() => handleOptionSelect('results')}
+              className={`viewer-option-button ${selectedOption === 'vehicles' ? 'active' : ''}`}
+              onClick={() => handleOptionSelect('vehicles')}
             >
-              Race Results
+              Vehicles
             </button>
           </div>
 
           {selectedOption && (
-            <div className="test-action">
+            <div className="viewer-action">
               <button 
-                onClick={() => testApiCall(selectedOption)} 
-                className="test-button"
+                onClick={() => viewApiCall(selectedOption)} 
+                className="viewer-button"
                 disabled={loading}
               >
                 {loading ? 'Loading...' : `View ${selectedOption.charAt(0).toUpperCase() + selectedOption.slice(1)} Data`}
@@ -91,21 +96,26 @@ const Test = () => {
           )}
           
           {error && (
-            <div className="test-error">
+            <div className="viewer-error">
               {error}
             </div>
           )}
           
-          {testResult && (
-            <div className="test-result">
+          {viewResult && (
+            <div className="viewer-result">
               <h4>Data Results:</h4>
-              <DataTable data={testResult} />
+              <DataTable data={viewResult} />
             </div>
           )}
+        </div>
+
+        <div className="admin-navigation">
+          <a href="/admin/data-manager" className="nav-link">Data Manager</a>
+          <a href="/admin" className="nav-link">Home</a>
         </div>
       </div>
     </div>
   );
 };
 
-export default Test; 
+export default AdminDataViewer; 

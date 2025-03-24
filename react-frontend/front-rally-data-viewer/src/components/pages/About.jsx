@@ -1,5 +1,5 @@
 import React from 'react';
-import { useScrollToComponent } from '../hooks/useScrollToComponent';
+import { useScrollToComponent } from '../../hooks/useScrollToComponent';
 
 const About = () => {
   const componentRef = useScrollToComponent();

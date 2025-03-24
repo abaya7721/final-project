@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/DataTable.css';
-import { formatColumnName } from '../utilities/NameModifier';
+import '../../css/DataTable.css';
+import { formatColumnName } from '../../utilities/NameModifier';
 
 const DataTable = ({ data }) => {
   if (!data || data.length === 0) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../contexts/UserContext';
-import adminBgImage from '/porsche-luca-scalvinoni.jpg';
-import '../css/AdminDashboard.css';
+import { useUser } from '../../contexts/UserContext';
+import adminBgImage from '/porsche-luca-scalvinoni.jpg?url';
+import '../../css/AdminDashboard.css';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -50,23 +50,6 @@ const AdminDashboard = () => {
           Data Viewer
         </button>
       </div>
-
-      <nav className="main-nav admin-nav">
-        <div className="nav-container">
-          <div className="nav-links">
-            <a href="/about" className="nav-link">About</a>
-            <button 
-              onClick={() => {
-                logout();
-                navigate('/');
-              }} 
-              className="nav-link logout-button"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </nav>
     </div>
   );
 };

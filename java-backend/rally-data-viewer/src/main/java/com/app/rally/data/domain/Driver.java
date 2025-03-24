@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -13,7 +15,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="drivers")
 public class Driver {
-    @Id
+    @Id  
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String nationality;
@@ -25,8 +28,9 @@ public class Driver {
     private List<Standing> standings;
     
     @ManyToOne
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id", insertable = true, updatable = true)
     private Team team;
+
 
     public Driver() {
     }
@@ -61,18 +65,21 @@ public class Driver {
         this.nationality = nationality;
     }
 
-    public List<RaceResults> getRaceResults() {
-        return raceResults;
+    // public List<RaceResults> getRaceResults() {
+    //     return raceResults;
+    // }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
-    public Team getTeam() {
-        return team;
-    }
+    // public Team getTeam() {
+    //     return team;
+    // }
 
     // public List<Standing> getStandings() {
     //     return standings;
     // }
-
 
     @Override
     public boolean equals(Object o) {

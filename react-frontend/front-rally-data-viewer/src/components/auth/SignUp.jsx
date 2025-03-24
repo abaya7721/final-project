@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../contexts/UserContext';
-import { useScrollToComponent } from '../hooks/useScrollToComponent';
+import { useUser } from '../../contexts/UserContext';
+import { useScrollToComponent } from '../../hooks/useScrollToComponent';
 
 const SignUp = () => {
   const navigate = useNavigate();

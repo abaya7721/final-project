@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { useUser } from '../contexts/UserContext';
-import { useData } from '../contexts/DataContext';
-import DataTable from './DataTable';
-import '../css/UserDashboard.css';
+import { useUser } from '../../contexts/UserContext';
+import { useData } from '../../contexts/DataContext';
+import DataTable from '../data/DataTable';
+import '../../css/UserDashboard.css';
 
 const UserDashboard = () => {
   const { user } = useUser();

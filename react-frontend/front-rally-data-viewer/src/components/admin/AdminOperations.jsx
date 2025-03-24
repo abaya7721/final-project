@@ -88,10 +88,10 @@ export const AdminOperations = {
   // Helper function to validate data based on type
   validateData: (dataType, data) => {
     const requiredFields = {
-      driver: ['name', 'nationality', 'team'],
+      driver: ['name', 'nationality', 'teamId'],
       event: ['name', 'date', 'location'],
       vehicle: ['make', 'model', 'year'],
-      team: ['name', 'country', 'founded']
+      team: ['name', 'vehicleId']
     };
 
     const fields = requiredFields[dataType.toLowerCase()];

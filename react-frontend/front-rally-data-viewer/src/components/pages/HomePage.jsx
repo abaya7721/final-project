@@ -1,7 +1,7 @@
 import React from 'react';
-import Banner from './Banner';
-import SignUpButton from './SignUpButton';
-import { useScrollToComponent } from '../hooks/useScrollToComponent';
+import Banner from '../common/Banner';
+import SignUpButton from '../auth/SignUpButton';
+import { useScrollToComponent } from '../../hooks/useScrollToComponent';
 
 const HomePage = () => {
   const componentRef = useScrollToComponent();
