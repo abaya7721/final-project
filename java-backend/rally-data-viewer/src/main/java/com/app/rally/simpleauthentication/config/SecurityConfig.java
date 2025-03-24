@@ -1,4 +1,4 @@
-package com.app.rally.config;
+package com.app.rally.simpleauthentication.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

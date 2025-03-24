@@ -7,6 +7,7 @@ import SignIn from './components/LogIn';
 import About from './components/About';
 import Test from './components/DataTest';
 import AdminDashboard from './components/AdminDashboard';
+import AdminDataManager from './components/AdminDataManager';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserProvider } from './contexts/UserContext';
 import { DataProvider } from './contexts/DataContext';
@@ -27,6 +28,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/about" element={<About />} />
               <Route path="/test" element={<Test />} />
+              <Route path="/user" element={<UserDashboard />} />
               <Route 
                 path="/admin" 
                 element={
@@ -36,28 +38,20 @@ function App() {
                 } 
               />
               <Route 
-                path="/admin/:section" 
+                path="/admin/data-manager" 
                 element={
                   <ProtectedRoute>
-                    <AdminDashboard />
+                    <AdminDataManager />
                   </ProtectedRoute>
                 } 
               />
               <Route
-                path="/user"
+                path="/dashboard"
                 element={
                   <ProtectedRoute>
                     <UserDashboard />
                   </ProtectedRoute>
                 }
-              />
-              <Route 
-                path="/user/:section" 
-                element={
-                  <ProtectedRoute>
-                    <UserDashboard />
-                  </ProtectedRoute>
-                } 
               />
             </Routes>
             <Footer />

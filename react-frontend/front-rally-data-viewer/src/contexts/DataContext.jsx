@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useReducer, useState } from 'react';
+import { dataReducer, initialState } from '../reducers/dataFilter';
 
 const DataContext = createContext();
 
@@ -11,6 +12,7 @@ export const useData = () => {
 };
 
 export const DataProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(dataReducer, initialState);
   const [standings, setStandings] = useState([]);
   const [raceResults, setRaceResults] = useState([]);
   const [vehicleResults, setVehicleResults] = useState([]);
@@ -25,6 +27,18 @@ export const DataProvider = ({ children }) => {
     vehicleResults: null
   });
 
+  const setFilter = (key, value) => {
+    dispatch({ type: 'SET_FILTER', payload: { key, value } });
+  };
+
+  const clearFilters = () => {
+    dispatch({ type: 'CLEAR_FILTERS' });
+  };
+
+  const applyFilters = (data, dataType) => {
+    dispatch({ type: 'APPLY_FILTERS', payload: { data, dataType } });
+  };
+
   const fetchStandings = async () => {
     setLoading(prev => ({ ...prev, standings: true }));
     setError(prev => ({ ...prev, standings: null }));
@@ -35,6 +49,7 @@ export const DataProvider = ({ children }) => {
       }
       const data = await response.json();
       setStandings(data);
+      applyFilters(data, 'standings');
     } catch (err) {
       setError(prev => ({ ...prev, standings: err.message }));
     } finally {
@@ -52,6 +67,7 @@ export const DataProvider = ({ children }) => {
       }
       const data = await response.json();
       setRaceResults(data);
+      applyFilters(data, 'raceResults');
     } catch (err) {
       setError(prev => ({ ...prev, raceResults: err.message }));
     } finally {
@@ -69,6 +85,7 @@ export const DataProvider = ({ children }) => {
       }
       const data = await response.json();
       setVehicleResults(data);
+      applyFilters(data, 'vehicleResults');
     } catch (err) {
       setError(prev => ({ ...prev, vehicleResults: err.message }));
     } finally {
@@ -82,9 +99,14 @@ export const DataProvider = ({ children }) => {
     vehicleResults,
     loading,
     error,
+    filters: state.filters,
+    filteredData: state.filteredData,
     fetchStandings,
     fetchRaceResults,
-    fetchVehicleResults
+    fetchVehicleResults,
+    setFilter,
+    clearFilters,
+    applyFilters
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

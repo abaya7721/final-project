@@ -6,7 +6,7 @@ export const UserProvider = ({ children }) => {
     const guest = {
         username: "",
         password: "",
-        authenticated: false,
+        authenticated: true,
         authority: "ADMIN",
         authority2: "USER"
     };

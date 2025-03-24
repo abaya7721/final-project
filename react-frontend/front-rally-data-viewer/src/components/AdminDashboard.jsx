@@ -9,7 +9,16 @@ const AdminDashboard = () => {
   const { user, logout } = useUser();
 
   const handleOptionClick = (option) => {
-    navigate(`/admin/${option.toLowerCase().replace(' ', '-')}`);
+    switch (option) {
+      case 'Data Manager':
+        navigate('/admin/data-manager');
+        break;
+      case 'Data Viewer':
+        navigate('/admin/data-viewer');
+        break;
+      default:
+        navigate('/admin');
+    }
   };
 
   return (

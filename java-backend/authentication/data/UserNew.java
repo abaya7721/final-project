@@ -9,7 +9,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class UserNew implements UserDetails {
     @Id
     UUID id;
     String username;
@@ -19,10 +19,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Role role;
 
-    public User() {
+    public UserNew() {
     }
 
-    public User(UUID id, String username, String password, boolean enabled, Role role) {
+    public UserNew(UUID id, String username, String password, boolean enabled, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -96,7 +96,7 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", UserNew.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("username='" + username + "'")
                 .add("password='" + password + "'")
@@ -107,7 +107,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof User user)) return false;
+        if (!(o instanceof UserNew user)) return false;
         return isEnabled() == user.isEnabled() && Objects.equals(getId(), user.getId()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && getRole() == user.getRole();
     }
 

@@ -6,6 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,23 +52,23 @@ public class RallyDataController implements Serializable{
     StandingsRepository standingsRepository;
 
 
-    @RequestMapping("/drivers")
-    public ResponseEntity<List<Driver>> getDrivers() {
-        List<Driver> drivers = driverRepository.findAll();
-        return ResponseEntity.ok(drivers);
-    }
+    // @RequestMapping("/drivers")
+    // public ResponseEntity<List<Driver>> getDrivers() {
+    //     List<Driver> drivers = driverRepository.findAll();
+    //     return ResponseEntity.ok(drivers);
+    // }
 
-    @RequestMapping("/vehicles")
-    public ResponseEntity<List<Vehicle>> getVehicles() {
-        List<Vehicle> vehicles = vehicleRepository.findAll();
-        return ResponseEntity.ok(vehicles);
-    }
+    // @RequestMapping("/vehicles")
+    // public ResponseEntity<List<Vehicle>> getVehicles() {
+    //     List<Vehicle> vehicles = vehicleRepository.findAll();
+    //     return ResponseEntity.ok(vehicles);
+    // }
 
-    @RequestMapping("/teams")
-    public ResponseEntity<List<Team>> getTeams() {
-        List<Team> teams = teamRepository.findAll();
-        return ResponseEntity.ok(teams);
-    }
+    // @RequestMapping("/teams")
+    // public ResponseEntity<List<Team>> getTeams() {
+    //     List<Team> teams = teamRepository.findAll();
+    //     return ResponseEntity.ok(teams);
+    // }
 
     // @RequestMapping("/results")
     // public ResponseEntity<List<RaceResults>> getRaces() {
@@ -103,10 +108,85 @@ public class RallyDataController implements Serializable{
         return ResponseEntity.ok(standings);
     }
 
-    
-    
+    // Driver endpoints
+    @PostMapping("/drivers")
+    public ResponseEntity<Driver> createDriver(@RequestBody Driver driver) {
+        Driver newDriver = driverRepository.save(driver);
+        return ResponseEntity.ok(newDriver);
+    }
 
-    
+    @PutMapping("/drivers/{id}")
+    public ResponseEntity<Driver> updateDriver(@PathVariable Integer id, @RequestBody Driver driver) {
+        driver.setId(id);
+        Driver updatedDriver = driverRepository.save(driver);
+        return ResponseEntity.ok(updatedDriver);
+    }
+
+    @DeleteMapping("/drivers/{id}")
+    public ResponseEntity<Void> deleteDriver(@PathVariable Integer id) {
+        driverRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    // Vehicle endpoints
+    @PostMapping("/vehicles")
+    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle) {
+        Vehicle newVehicle = vehicleRepository.save(vehicle);
+        return ResponseEntity.ok(newVehicle);
+    }
+
+    @PutMapping("/vehicles/{id}")
+    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Integer id, @RequestBody Vehicle vehicle) {
+        vehicle.setId(id);
+        Vehicle updatedVehicle = vehicleRepository.save(vehicle);
+        return ResponseEntity.ok(updatedVehicle);
+    }
+
+    @DeleteMapping("/vehicles/{id}")
+    public ResponseEntity<Void> deleteVehicle(@PathVariable Integer id) {
+        vehicleRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    // Team endpoints
+    @PostMapping("/teams")
+    public ResponseEntity<Team> createTeam(@RequestBody Team team) {
+        Team newTeam = teamRepository.save(team);
+        return ResponseEntity.ok(newTeam);
+    }
+
+    @PutMapping("/teams/{id}")
+    public ResponseEntity<Team> updateTeam(@PathVariable Integer id, @RequestBody Team team) {
+        team.setId(id);
+        Team updatedTeam = teamRepository.save(team);
+        return ResponseEntity.ok(updatedTeam);
+    }
+
+    @DeleteMapping("/teams/{id}")
+    public ResponseEntity<Void> deleteTeam(@PathVariable Integer id) {
+        teamRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    // Event endpoints
+    @PostMapping("/events")
+    public ResponseEntity<Event> createEvent(@RequestBody Event event) {
+        Event newEvent = eventRepository.save(event);
+        return ResponseEntity.ok(newEvent);
+    }
+
+    @PutMapping("/events/{id}")
+    public ResponseEntity<Event> updateEvent(@PathVariable Integer id, @RequestBody Event event) {
+        event.setId(id);
+        Event updatedEvent = eventRepository.save(event);
+        return ResponseEntity.ok(updatedEvent);
+    }
+
+    @DeleteMapping("/events/{id}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable Integer id) {
+        eventRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }
 
 

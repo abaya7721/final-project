@@ -1,0 +1,225 @@
+.admin-data-manager {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.admin-mode-banner {
+  background: linear-gradient(to right, #2c3e50, #3498db);
+  padding: 1rem 2rem;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-mode-banner h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.admin-mode-banner p {
+  margin: 0.3rem 0 0;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.data-manager-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.data-type-section,
+.action-section,
+.form-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.data-type-section h2,
+.action-section h2,
+.form-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #3498db;
+}
+
+.data-type-buttons,
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.data-type-button,
+.action-button {
+  padding: 1rem;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.data-type-button:hover,
+.action-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.data-type-button.active,
+.action-button.active {
+  background: #3498db;
+  border-color: #2980b9;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Form Styles */
+.admin-form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #3498db;
+  font-size: 1rem;
+}
+
+.form-group label::after {
+  content: '';
+  margin-left: 4px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Required field styles */
+.required-field {
+  border-left: 3px solid #3498db;
+}
+
+.required-field + label::after {
+  content: '*';
+  color: #3498db;
+  margin-left: 4px;
+}
+
+.form-group input[required] + label::after {
+  content: '*';
+  color: #3498db;
+  margin-left: 4px;
+}
+
+/* Optional field styles */
+.form-group input:not([required]) {
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.error-message,
+.success-message {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.error-message {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+}
+
+.success-message {
+  background: rgba(46, 204, 113, 0.2);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-mode-banner {
+    padding: 1rem;
+    height: 70px;
+  }
+
+  .admin-mode-banner h1 {
+    font-size: 1.5rem;
+  }
+
+  .data-manager-content {
+    padding: 0 1rem;
+  }
+
+  .data-type-section,
+  .action-section,
+  .form-section {
+    padding: 1.5rem;
+  }
+
+  .data-type-buttons,
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form {
+    padding: 1.5rem;
+  }
+} 
