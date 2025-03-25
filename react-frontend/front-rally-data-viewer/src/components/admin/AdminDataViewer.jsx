@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import DataTable from '../data/DataTable';
 import { useScrollToComponent } from '../../hooks/useScrollToComponent';
 import '../../css/AdminDataViewer.css';
@@ -110,8 +111,12 @@ const AdminDataViewer = () => {
         </div>
 
         <div className="admin-navigation">
-          <a href="/admin/data-manager" className="nav-link">Data Manager</a>
-          <a href="/admin" className="nav-link">Home</a>
+          <NavLink to="/admin/data-manager" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            Data Manager
+          </NavLink>
+          <NavLink to="/admin" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            Home
+          </NavLink>
         </div>
       </div>
     </div>

@@ -3,7 +3,8 @@ export const initialState = {
     vehicle: '',
     driver: '',
     event: '',
-    region: ''
+    region: '',
+    year: ''
   },
   filteredData: null
 };
@@ -44,6 +45,23 @@ export const dataReducer = (state, action) => {
                 return item.vehicleMake?.toLowerCase().includes(value.toLowerCase());
               case 'region':
                 return item.region?.toLowerCase().includes(value.toLowerCase());
+              case 'year':
+                // Handle year filtering based on data type
+                switch (dataType) {
+                  case 'results':
+                    // For race results, filter by date column
+                    const itemDate = new Date(item.date);
+                    const itemYear = itemDate.getFullYear().toString();
+                    return itemYear === value;
+                  case 'vehicle':
+                    // For vehicle results, filter by Year string column
+                    return item.vehicleYear === value;
+                  case 'standings':
+                    // For standings, filter by Year column
+                    return item.year === value;
+                  default:
+                    return true;
+                }
               default:
                 return true;
             }

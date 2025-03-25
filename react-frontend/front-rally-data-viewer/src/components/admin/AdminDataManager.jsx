@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/UserAuthContext';
 import { AdminOperations } from './AdminOperations';
 import '../../css/AdminDataManager.css';
@@ -11,6 +12,7 @@ const AdminDataManager = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
 
   const dataTypes = ['Driver', 'Event', 'Vehicle', 'Team'];
   const actions = ['Add', 'Update', 'Delete'];
@@ -236,8 +238,12 @@ const AdminDataManager = () => {
         )}
 
         <div className="admin-navigation">
-          <a href="/admin/data-viewer" className="nav-link">Data Viewer</a>
-          <a href="/admin" className="nav-link">Home</a>
+          <NavLink to="/admin/data-viewer" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            Data Viewer
+          </NavLink>
+          <NavLink to="/admin" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            Home
+          </NavLink>
         </div>
       </div>
     </div>
