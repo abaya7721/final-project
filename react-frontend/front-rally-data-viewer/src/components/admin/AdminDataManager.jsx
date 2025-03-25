@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useUser } from '../../contexts/UserContext';
+import { useAuth } from '../../contexts/UserAuthContext';
 import { AdminOperations } from './AdminOperations';
 import '../../css/AdminDataManager.css';
 
 const AdminDataManager = () => {
-  const { user } = useUser();
+  const { user } = useAuth();
   const [selectedDataType, setSelectedDataType] = useState(null);
   const [selectedAction, setSelectedAction] = useState(null);
   const [formData, setFormData] = useState({});

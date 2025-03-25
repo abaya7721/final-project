@@ -28,7 +28,7 @@ public class Driver {
     private List<Standing> standings;
     
     @ManyToOne
-    @JoinColumn(name = "team_id", insertable = true, updatable = true)
+    @JoinColumn(name = "team_id")
     private Team team;
 
 

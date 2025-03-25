@@ -1,17 +1,25 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useUser } from '../../contexts/UserContext';
+import { useAuth } from '../../contexts/UserAuthContext';
 
-const ProtectedRoute = ({ children, requiredAuthority = "ADMIN" || "USER"}) => {
-  const { user } = useUser();
+const ProtectedRoute = ({ children, requiredRole = "ROLE_USER" }) => {
+  const { user, isAuthenticated } = useAuth();
 
-  // if (!user.authenticated) {
-  //   // Redirect to login if not authenticated
-  //   return <Navigate to="/signin" replace />;
-  // }
+  // Check if user is authenticated
+  if (!isAuthenticated()) {
+    console.log('User not authenticated, redirecting to login');
+    return <Navigate to="/signin" replace />;
+  }
 
-  if (user.authority !== requiredAuthority) {
-    // Redirect to home if not authorized
+  // Strict role checking - exact match required
+  if (!user || user.role !== requiredRole) {
+    console.log('User lacks required role:', requiredRole, 'Current role:', user?.role);
+    // Redirect admin to admin dashboard, users to user dashboard
+    if (user.role === "ROLE_ADMIN") {
+      return <Navigate to="/admin" replace />;
+    } else if (user.role === "ROLE_USER") {
+      return <Navigate to="/user" replace />;
+    }
     return <Navigate to="/" replace />;
   }
 

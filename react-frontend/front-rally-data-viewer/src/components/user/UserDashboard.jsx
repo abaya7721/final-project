@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
-import { useUser } from '../../contexts/UserContext';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useAuth } from '../../contexts/UserAuthContext';
 import { useData } from '../../contexts/DataContext';
 import DataTable from '../data/DataTable';
 import '../../css/UserDashboard.css';
 
 const UserDashboard = () => {
-  const { user } = useUser();
+  const { user } = useAuth();
   const { 
     standings, 
     raceResults, 
@@ -23,29 +23,44 @@ const UserDashboard = () => {
   } = useData();
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleOptionClick = (option) => {
+  // Add effect to fetch initial data
+  useEffect(() => {
+    if (selectedOption) {
+      handleOptionClick(selectedOption);
+    }
+  }, []); // Empty dependency array for initial load
+
+  const handleOptionClick = async (option) => {
     setSelectedOption(option);
     clearFilters(); // Clear filters when changing data type
-    switch (option) {
-      case 'standings':
-        fetchStandings();
-        break;
-      case 'results':
-        fetchRaceResults();
-        break;
-      case 'vehicle':
-        fetchVehicleResults();
-        break;
-      default:
-        break;
+    
+    console.log('Fetching data for option:', option);
+    try {
+      switch (option) {
+        case 'standings':
+          await fetchStandings();
+          break;
+        case 'results':
+          await fetchRaceResults();
+          break;
+        case 'vehicle':
+          await fetchVehicleResults();
+          break;
+        default:
+          break;
+      }
+    } catch (err) {
+      console.error('Error fetching data:', err);
     }
   };
 
   const handleFilterChange = (key, value) => {
+    console.log('Applying filter:', key, value);
     setFilter(key, value);
     // Reapply filters with current data
     const currentData = getCurrentData();
     if (currentData) {
+      console.log('Current data before filtering:', currentData);
       applyFilters(currentData, selectedOption);
     }
   };
@@ -67,15 +82,30 @@ const UserDashboard = () => {
   const isLoading = loading.standings || loading.raceResults || loading.vehicleResults;
   const currentError = error.standings || error.raceResults || error.vehicleResults;
 
+  // Log state changes
+  useEffect(() => {
+    console.log('Current state:', {
+      selectedOption,
+      currentData,
+      filteredData,
+      loading,
+      error
+    });
+  }, [selectedOption, currentData, filteredData, loading, error]);
+
   // Extract unique values for each filter key from the current data
   const filterOptions = useMemo(() => {
-    if (!currentData) return {
-      driver: [],
-      event: [],
-      vehicle: [],
-      region: []
-    };
+    if (!currentData) {
+      console.log('No current data available for filters');
+      return {
+        driver: [],
+        event: [],
+        vehicle: [],
+        region: []
+      };
+    }
 
+    console.log('Calculating filter options from data:', currentData);
     const options = {
       driver: new Set(),
       event: new Set(),
@@ -84,26 +114,10 @@ const UserDashboard = () => {
     };
 
     currentData.forEach(item => {
-      switch (selectedOption) {
-        case 'standings':
-          if (item.driverName) options.driver.add(item.driverName);
-          if (item.raceName) options.event.add(item.raceName);
-          if (item.vehicleMake) options.vehicle.add(item.vehicleMake);
-          if (item.region) options.region.add(item.region);
-          break;
-        case 'results':
-          if (item.driverName) options.driver.add(item.driverName);
-          if (item.raceName) options.event.add(item.raceName);
-          if (item.vehicleMake) options.vehicle.add(item.vehicleMake);
-          if (item.region) options.region.add(item.region);
-          break;
-        case 'vehicle':
-          if (item.driverName) options.driver.add(item.driverName);
-          if (item.raceName) options.event.add(item.raceName);
-          if (item.vehicleMake) options.vehicle.add(item.vehicleMake);
-          if (item.region) options.region.add(item.region);
-          break;
-      }
+      if (item.driverName) options.driver.add(item.driverName);
+      if (item.raceName) options.event.add(item.raceName);
+      if (item.vehicleMake) options.vehicle.add(item.vehicleMake);
+      if (item.region) options.region.add(item.region);
     });
 
     // Convert Sets to sorted arrays
@@ -113,7 +127,7 @@ const UserDashboard = () => {
       vehicle: Array.from(options.vehicle).sort(),
       region: Array.from(options.region).sort()
     };
-  }, [currentData, selectedOption]);
+  }, [currentData]);
 
   return (
     <div className="user-dashboard">
@@ -124,7 +138,7 @@ const UserDashboard = () => {
       
       <div className="user-banner-content-container">
         <div className="user-banner-text">
-          <h1 className="banner-title">Welcome {user.username}</h1>
+          <h1 className="banner-title">Welcome {user?.username}</h1>
           <h2 className="banner-tagline">Select Data</h2>
         </div>
 
@@ -149,11 +163,11 @@ const UserDashboard = () => {
           </button>
         </div>
 
-        {currentData && (
+        {currentData && currentData.length > 0 && (
           <div className="filter-controls">
             <div className="filter-group">
               <select
-                value={filters.vehicle}
+                value={filters.vehicle || ''}
                 onChange={(e) => handleFilterChange('vehicle', e.target.value)}
                 className="filter-select"
               >
@@ -165,7 +179,7 @@ const UserDashboard = () => {
                 ))}
               </select>
               <select
-                value={filters.driver}
+                value={filters.driver || ''}
                 onChange={(e) => handleFilterChange('driver', e.target.value)}
                 className="filter-select"
               >
@@ -179,7 +193,7 @@ const UserDashboard = () => {
             </div>
             <div className="filter-group">
               <select
-                value={filters.event}
+                value={filters.event || ''}
                 onChange={(e) => handleFilterChange('event', e.target.value)}
                 className="filter-select"
               >
@@ -191,7 +205,7 @@ const UserDashboard = () => {
                 ))}
               </select>
               <select
-                value={filters.region}
+                value={filters.region || ''}
                 onChange={(e) => handleFilterChange('region', e.target.value)}
                 className="filter-select"
               >
@@ -220,7 +234,11 @@ const UserDashboard = () => {
         <div className="data-display">
           {isLoading && <div className="loading">Loading...</div>}
           {currentError && <div className="error">{currentError}</div>}
-          {filteredData && <DataTable data={filteredData} />}
+          {!isLoading && !currentError && filteredData && filteredData.length > 0 ? (
+            <DataTable data={filteredData} />
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </div>

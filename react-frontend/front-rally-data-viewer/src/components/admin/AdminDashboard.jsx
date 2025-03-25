@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../contexts/UserContext';
+import { useAuth } from '../../contexts/UserAuthContext';
 import adminBgImage from '/porsche-luca-scalvinoni.jpg?url';
 import '../../css/AdminDashboard.css';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  const { user, logout } = useUser();
+  const { user, logout } = useAuth();
 
   const handleOptionClick = (option) => {
     switch (option) {
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
           <div className="admin-banner-text">
             <h1 className="banner-title">Admin Dashboard</h1>
             <p className="banner-tagline">Manage and view rally data with ease</p>
-            <p className="admin-welcome">Welcome {user.username}</p>
+            <p className="admin-welcome">Welcome</p>
           </div>
         </div>
       </div>

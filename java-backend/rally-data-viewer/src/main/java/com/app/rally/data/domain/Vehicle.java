@@ -1,13 +1,11 @@
 package com.app.rally.data.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,8 +19,8 @@ public class Vehicle {
     private String make;
     private String year;
 
-    @OneToMany(mappedBy = "vehicle")
-    private List<Team> teams;
+    // @OneToMany(mappedBy = "vehicle")
+    // private List<Team> teams;
 
 
     public Vehicle() {

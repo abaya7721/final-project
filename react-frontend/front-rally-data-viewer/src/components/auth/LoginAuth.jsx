@@ -1,35 +1,43 @@
-import {useState} from "react";
-import {login} from "../../utilities/apiUtilities";
-import {jwtDecode} from "jwt-decode";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/UserAuthContext";
 import "../../css/App.css";
 
 export default function LoginAuth() {
+    const navigate = useNavigate();
+    const { login, error, loading, user } = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+
+    // Check if user is already logged in
+    useEffect(() => {
+        const token = localStorage.getItem('key');
+        if (token && user) {
+            console.log('User already logged in, redirecting');
+            navigate('/user');
+        }
+    }, [user, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        setError(null);
-
-        try {
-            const payload = {
-                username: username,
-                password: password
-            };
+        console.log('Attempting login with username:', username);
+        
+        const success = await login(username, password);
+        console.log('Login result:', success ? 'Success' : 'Failed');
+        
+        if (success) {
+            // Verify token was stored
+            const token = localStorage.getItem('key');
+            console.log('Token after login:', token ? 'Present' : 'Missing');
             
-            const response = await login(payload);
-            const claims = jwtDecode(response.token);
-            localStorage.setItem('key', response.token);
-            localStorage.setItem('role', claims.role[0].authority);
-            localStorage.setItem('username', claims.sub);
-        } catch (err) {
-            setError('Invalid username or password');
-            console.error('Login error:', err);
-        } finally {
-            setLoading(false);
+            if (token) {
+                console.log('Login successful, navigating to user dashboard');
+                navigate('/user');
+            } else {
+                console.error('Login succeeded but no token stored');
+            }
+        } else {
+            console.error('Login failed:', error);
         }
     };
 
@@ -47,6 +55,7 @@ export default function LoginAuth() {
                             onChange={(e) => setUsername(e.target.value)}
                             required
                             className="form-control"
+                            disabled={loading}
                         />
                     </div>
                     <div className="form-group">
@@ -58,6 +67,7 @@ export default function LoginAuth() {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             className="form-control"
+                            disabled={loading}
                         />
                     </div>
                     {error && <div className="error-message">{error}</div>}

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useUser } from '../../contexts/UserContext';
+import { useAuth } from '../../contexts/UserAuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
-  const { user, logout } = useUser();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -15,7 +15,7 @@ const Navigation = () => {
     <nav className="main-nav">
       <div className="nav-container">
         <div className="nav-links">
-        {user.authority === "USER" ? (
+          {user?.role === "ROLE_USER" ? (
             <>
               <a href="/about" className="nav-link">About</a>
               <a href="/user" className="nav-link">User View</a>
@@ -23,11 +23,10 @@ const Navigation = () => {
                 Logout
               </button>
             </>
-          ) : user.authority === "ADMIN" ? (
+          ) : user?.role === "ROLE_ADMIN" ? (
             <>
               <a href="/about" className="nav-link">About</a>
               <a href="/admin" className="nav-link">Admin Dashboard</a>
-              <a href="/user" className="nav-link">User View</a>
               <button onClick={handleLogout} className="logout-button">
                 Logout
               </button>
@@ -40,8 +39,9 @@ const Navigation = () => {
             </>
           )}
         </div>
-        </div>
+      </div>
     </nav>
   );
 };
+
 export default Navigation;
