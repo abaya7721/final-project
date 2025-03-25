@@ -42,7 +42,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background: rgba(26, 26, 26, 0.8);
+  background: rgba(42, 43, 44, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -128,8 +128,60 @@
   margin-top: 2rem;
 }
 
+.data-section-title {
+  color: #ffd700;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.data-section-subtitle {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.data-section-subtitle span {
+  color: #ffd700;
+  font-weight: 500;
+  background: rgba(255, 215, 0, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+}
+
+.data-section h4 {
+  color: #ffd700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.data-section div {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.data-section span {
+  color: #ffd700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
 .data-display {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(94, 88, 8, 0.404);
   border-radius: 8px;
   padding: 1.5rem;
   min-height: 200px;

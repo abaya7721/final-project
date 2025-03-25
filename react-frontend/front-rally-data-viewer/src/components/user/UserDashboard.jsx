@@ -6,6 +6,7 @@ import '../../css/UserDashboard.css';
 
 const UserDashboard = () => {
   const { user } = useAuth();
+  const [title, setTitle] = useState('');
   const { 
     standings, 
     raceResults, 
@@ -39,12 +40,15 @@ const UserDashboard = () => {
       switch (option) {
         case 'standings':
           await fetchStandings();
+          setTitle('Standings');
           break;
         case 'results':
           await fetchRaceResults();
+          setTitle('Race Results with Events');
           break;
         case 'vehicle':
           await fetchVehicleResults();
+          setTitle('Race Results with Vehicles');
           break;
         default:
           break;
@@ -259,8 +263,24 @@ const UserDashboard = () => {
           )}
         </div>
         </div>
-
         <div className="data-section">
+          <div className="data-section-title">Currently Viewing: {title}</div>
+          <div className="data-section-subtitle">
+            <span>Found {filteredData ? filteredData.length : 0} results</span>
+          </div>
+          {Object.entries(filters).some(([_, value]) => value) && (
+            <div>
+              {' '}
+              {Object.entries(filters)
+                .filter(([_, value]) => value)
+                .map(([key, value], index, array) => (
+                  <span key={key}>
+                    {key.charAt(0).toUpperCase() + key.slice(1)}: {value}
+                    {index < array.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
+          )}
           {isLoading && <div className="loading">Loading...</div>}
           {currentError && <div className="error">{currentError}</div>}
           {!isLoading && !currentError && filteredData && filteredData.length > 0 ? (
