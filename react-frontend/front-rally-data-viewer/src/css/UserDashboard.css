@@ -4,6 +4,7 @@
   min-height: 100vh;
   background-color: #1a1a1a;
   color: white;
+  padding-bottom: 100px;
 }
 
 .banner-image-container {
@@ -11,8 +12,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 70vh;
+  height: 100vh;
   overflow: hidden;
+  z-index: 1;
 }
 
 .banner-background-image {
@@ -36,7 +38,8 @@
 
 .user-banner-content-container {
   position: relative;
-  width: 50%;
+  width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   background: rgba(26, 26, 26, 0.8);
@@ -44,7 +47,11 @@
   border-radius: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   z-index: 2;
-  top: 20vh;
+  top: 5vh;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .user-banner-text {
@@ -67,15 +74,28 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Controls section for buttons and filters */
+.controls-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .data-options {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
 }
 
 .option-button {
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   font-size: 1.1rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -83,6 +103,9 @@
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 .option-button:hover {
@@ -96,11 +119,22 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Data display section */
+.data-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+  margin-top: 2rem;
+}
+
 .data-display {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   padding: 1.5rem;
   min-height: 200px;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .loading {
@@ -123,15 +157,16 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   backdrop-filter: blur(5px);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .filter-group {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
-
-
 
 .clear-filters-button {
   width: 100%;
@@ -152,6 +187,8 @@
 
 .filter-select {
   flex: 1;
+  min-width: 200px;
+  max-width: 100%;
   padding: 0.8rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -184,24 +221,49 @@
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Responsive Design */
+/* Update responsive design for controls section */
 @media (max-width: 1024px) {
-  .user-banner-content-container {
-    width: 70%;
+  .controls-section {
+    width: 90%;
   }
 }
 
 @media (max-width: 768px) {
+  .controls-section {
+    width: 95%;
+    padding: 1rem;
+  }
+
   .user-banner-content-container {
-    width: 90%;
-    top: 15vh;
+    width: 95%;
+    top: 2vh;
+    padding: 1rem;
   }
 
   .banner-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .banner-tagline {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
+
+  .option-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .data-display {
+    max-height: 50vh;
+  }
+}
+
+/* Add styles for the footer */
+footer {
+  position: relative;
+  z-index: 2;
+  background: rgba(26, 26, 26, 0.9);
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
 } 
