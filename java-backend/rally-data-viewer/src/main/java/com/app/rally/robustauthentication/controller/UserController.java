@@ -36,12 +36,16 @@ public class UserController implements Serializable {
         return userRepository.findAll();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN','ROLE_USER)")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     @GetMapping("/me")
     public User getThisUser(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails)principal).getUsername();
-        return userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+        return user;
     }
 
     @PostMapping("/login")

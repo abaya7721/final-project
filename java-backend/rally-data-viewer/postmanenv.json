@@ -1,0 +1,18 @@
+{
+  "id": "your-environment-id",
+  "name": "Rally Data Viewer Local",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    }
+  ]
+}
