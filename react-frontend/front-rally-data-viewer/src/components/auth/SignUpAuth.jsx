@@ -51,20 +51,14 @@ export default function SignUpAuth() {
             console.log('Signup response:', response);
             
             if (response.token) {
-                console.log('Signup successful, attempting login');
-                const loginSuccess = await login({
-                    username: username,
-                    password: password
-                });
-                
-                if (loginSuccess) {
-                    console.log('Login successful, navigating to dashboard');
-                    navigate('/');
-                } else {
-                    setSignupErrors(['Signup successful but login failed. Please try logging in manually.']);
-                }
+                console.log('Signup successful');
+                setSignupErrors(['Signup successful! Please log in with your new account.']);
+                // Clear the form
+                setUsername("");
+                setPassword("");
+                setPasswordConfirm("");
             } else {
-                setSignupErrors(['Signup response did not include a token. Please try again.']);
+                setSignupErrors(['Signup failed. Please try again.']);
             }
         } catch (err) {
             console.error('Signup error details:', err);
@@ -80,47 +74,49 @@ export default function SignUpAuth() {
 
     return (
         <div className="auth-container">
-            <h3>Sign Up</h3>
             <form onSubmit={handleSubmit} className="auth-form">
+                <h2 className="auth-title-left">Enter Information</h2>
                 {signupErrors.length > 0 && (
                     <div className="error-messages">
                         {signupErrors.map((error, index) => (
-                            <p key={index} className="error-message">{error}</p>
+                            <p key={index} className={error.includes('successful') ? 'success-message' : 'error-message'}>
+                                {error}
+                            </p>
                         ))}
                     </div>
                 )}
                 {error && <p className="error-message">{error}</p>}
                 
-                <div className="form-group">
-                    <label>Username:</label>
+                <div className="form-group-left">
+                    <label className="form-label">Username:</label>
                     <input
                         type="text"
+                        className="form-control-left"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         disabled={loading}
-                        placeholder="Enter your username"
                     />
                 </div>
 
-                <div className="form-group">
-                    <label>Password:</label>
+                <div className="form-group-left">
+                    <label className="form-label">Password:</label>
                     <input
                         type="password"
+                        className="form-control-left"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         disabled={loading}
-                        placeholder="Enter your password"
                     />
                 </div>
 
-                <div className="form-group">
-                    <label>Confirm Password:</label>
+                <div className="form-group-left">
+                    <label className="form-label">Confirm Password:</label>
                     <input
                         type="password"
+                        className="form-control-left"
                         value={passwordConfirm}
                         onChange={(e) => setPasswordConfirm(e.target.value)}
                         disabled={loading}
-                        placeholder="Confirm your password"
                     />
                 </div>
 

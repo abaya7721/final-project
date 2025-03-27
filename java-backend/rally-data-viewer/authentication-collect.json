@@ -1,0 +1,84 @@
+{
+    "info": {
+      "name": "Rally Data Viewer - Authentication",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Sign Up",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/api/users/signup",
+            "host": ["{{base_url}}"],
+            "path": ["api", "users", "signup"]
+          },
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"username\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Sign In",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/api/users/login",
+            "host": ["{{base_url}}"],
+            "path": ["api", "users", "login"]
+          },
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"username\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Get Current User",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{jwt_token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/api/users/me",
+            "host": ["{{base_url}}"],
+            "path": ["api", "users", "me"]
+          }
+        }
+      },
+      {
+        "name": "Get All Users (Admin Only)",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{jwt_token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/api/users",
+            "host": ["{{base_url}}"],
+            "path": ["api", "users"]
+          }
+        }
+      }
+    ]
+  }

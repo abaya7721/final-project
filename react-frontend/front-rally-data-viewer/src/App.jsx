@@ -15,6 +15,8 @@ import AdminDataViewer from './components/admin/AdminDataViewer';
 import LoginAuth from './components/auth/LoginAuth';
 import { UserAuthProvider } from './contexts/UserAuthContext';
 import SignUpAuth from './components/auth/SignUpAuth';
+import NotFound from './components/NotFound';
+import SampleData from './components/pages/SampleData';
 
 // Separate component for the app content
 const AppContent = () => {
@@ -30,6 +32,7 @@ const AppContent = () => {
               <Route path="/signup" element={<SignUpAuth />} />
               <Route path="/signin" element={<LoginAuth />} />
               <Route path="/about" element={<About />} />
+              <Route path="/sample-data" element={<SampleData />} />
               
               {/* User routes */}
               <Route
@@ -66,6 +69,7 @@ const AppContent = () => {
                   </ProtectedRoute>
                 } 
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
           </div>

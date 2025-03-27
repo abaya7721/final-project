@@ -59,6 +59,10 @@ public class Standing {
         return driver;
     }
 
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Standing standings)) return false;

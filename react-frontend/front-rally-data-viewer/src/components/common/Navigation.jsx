@@ -36,6 +36,7 @@ const Navigation = () => {
               <a href="/" className="nav-link">Home</a>
               <a href="/about" className="nav-link">About</a>
               <a href="/sample-data" className="nav-link">Sample Data</a>
+              <a href="/signin" className="nav-link">Login</a>
             </>
           )}
         </div>
